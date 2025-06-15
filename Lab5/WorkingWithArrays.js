@@ -81,4 +81,15 @@ export default function WorkingWithArrays(app) {
     res.json(todos);
   });
 
+  app.put("/lab5/todos/:id", (req, res) => {
+    const { id } = req.params;
+    todos = todos.map((t) => {
+      if (t.id === parseInt(id)) {
+        return { ...t, ...req.body };
+      }
+      return t;
+    });
+    res.sendStatus(200);
+  });
+
 };
