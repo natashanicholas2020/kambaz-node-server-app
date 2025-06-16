@@ -25,3 +25,10 @@ export function createCourse(course) {
     return newCourse;
   }
   
+export function updateCourse(courseId, courseUpdates) {
+    const { courses } = Database;
+    const course = courses.find((course) => course._id === courseId);
+    Object.assign(course, courseUpdates);
+    return course;
+  }
+  
