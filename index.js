@@ -5,8 +5,13 @@ import cors from "cors";
 import UserRoutes from "./Kambaz/Users/routes.js";
 
 const app = express()
+
 app.use(cors());  
 app.use(express.json());
+// app.use(cors({
+//     origin: "http://localhost:5173",
+//     credentials: true
+//   }));
 
 UserRoutes(app);
 Lab5(app);

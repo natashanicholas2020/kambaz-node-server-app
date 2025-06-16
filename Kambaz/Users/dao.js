@@ -14,6 +14,6 @@ export const findUserByUsername = (username) => users.find((user) => user.userna
 export const findUserByCredentials = (username, password) =>
   users.find( (user) => user.username === username && user.password === password );
 
-export const updateUser = (userId, user) => (users = users.map((u) => (u._id === userId ? user : u)));
+  export const updateUser = (userId, user) => (users = users.map((u) => (u._id === userId ? user : u)));
 
 export const deleteUser = (userId) => (users = users.filter((u) => u._id !== userId));
