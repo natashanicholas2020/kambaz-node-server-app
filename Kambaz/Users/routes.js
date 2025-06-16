@@ -8,8 +8,8 @@ export default function UserRoutes(app) {
   const findUserById = (req, res) => { };
   const updateUser = (req, res) => { };
   const signup = (req, res) => { };
-  
-  const signin = (req, res) => {
+
+  const signin = (req, res) => { 
     const { username, password } = req.body;
     currentUser = dao.findUserByCredentials(username, password);
     res.json(currentUser);

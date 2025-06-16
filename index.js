@@ -5,9 +5,10 @@ import cors from "cors";
 import UserRoutes from "./Kambaz/Users/routes.js";
 
 const app = express()
-UserRoutes(app);
 app.use(cors());  
 app.use(express.json());
+
+UserRoutes(app);
 Lab5(app);
 Hello(app)
 app.listen(process.env.PORT || 4000)
