@@ -19,7 +19,7 @@ export function createModule(module) {
     return newModule;
   }  
 
-export function findModulesForCourse(courseId) {
-  const { modules } = Database;
-  return modules.filter((module) => module.course === courseId);
-}
+  export function findModulesForCourse(courseId) {
+    return model.find({ course: courseId });
+   }
+   
