@@ -36,4 +36,10 @@ export default function CourseRoutes(app) {
     res.send(status);
   });
 
+  app.post("/api/courses", async (req, res) => {
+    const course = await dao.createCourse(req.body);
+    res.json(course);
+  });
+ 
+
 }
