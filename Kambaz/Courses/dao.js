@@ -25,10 +25,7 @@ export function createCourse(course) {
   }
   
 export function updateCourse(courseId, courseUpdates) {
-    const { courses } = Database;
-    const course = courses.find((course) => course._id === courseId);
-    Object.assign(course, courseUpdates);
-    return course;
+    return model.updateOne({ _id: courseId }, { $set: courseUpdates });
   }
 
   export function deleteCourse(courseId) {
