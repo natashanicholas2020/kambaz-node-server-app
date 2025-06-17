@@ -2,11 +2,8 @@ import model from "./model.js";
 import { v4 as uuidv4 } from "uuid";
 
 export function deleteCourse(courseId) {
-    const { courses, enrollments } = Database;
-    Database.courses = courses.filter((course) => course._id !== courseId);
-    Database.enrollments = enrollments.filter(
-      (enrollment) => enrollment.course !== courseId
-  );}  
+    return model.deleteOne({ _id: courseId });
+   }   
 
 export function findAllCourses() {
     return model.find();
@@ -27,8 +24,4 @@ export function createCourse(course) {
 export function updateCourse(courseId, courseUpdates) {
     return model.updateOne({ _id: courseId }, { $set: courseUpdates });
   }
-
-  export function deleteCourse(courseId) {
-    return model.deleteOne({ _id: courseId });
-   }   
   
