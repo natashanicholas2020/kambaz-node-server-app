@@ -3,6 +3,7 @@ import * as courseDao from "../Courses/dao.js";
 import * as enrollmentsDao from "../Enrollments/dao.js";
 
 export default function UserRoutes(app) {
+    
   const createCourse = (req, res) => {
         const currentUser = req.session["currentUser"];
         const newCourse = courseDao.createCourse(req.body);
@@ -13,7 +14,12 @@ export default function UserRoutes(app) {
 
   const createUser = (req, res) => { };
   const deleteUser = (req, res) => { };
-  const findAllUsers = (req, res) => { };
+  
+  const findAllUsers = async (req, res) => {
+    const users = await dao.findAllUsers();
+    res.json(users);
+  };
+
   const findUserById = (req, res) => { };
 
   const updateUser = (req, res) => {
