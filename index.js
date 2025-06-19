@@ -8,6 +8,7 @@ import "dotenv/config";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 import ModuleRoutes from "./Kambaz/Modules/routes.js";
 import mongoose from "mongoose";
+import * as dao from "./Kambaz/Users/dao.js";  // <-- Add this import
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz";
 mongoose.connect(CONNECTION_STRING);
@@ -48,6 +49,7 @@ app.use((req, res, next) => {
   console.log("Session:", req.session);
   next();
 });
+
 
 UserRoutes(app);
 CourseRoutes(app);
