@@ -1,4 +1,5 @@
 import * as dao from "./dao.js";
+import * as courseDao from "../Courses/dao.js";
 
 export default function UserRoutes(app) {
 
@@ -56,6 +57,20 @@ export default function UserRoutes(app) {
     res.json(currentUser);
   };
 
+  const findCoursesForEnrolledUser = (req, res) => {
+    let { userId } = req.params;
+    if (userId === "current") {
+      const currentUser = req.session["currentUser"];
+      if (!currentUser) {
+        res.sendStatus(401);
+        return;
+      }
+      userId = currentUser._id;
+    }
+    const courses = courseDao.findCoursesForEnrolledUser(userId);
+    res.json(courses);
+  };
+
   app.post("/api/users", createUser);
 
   app.get("/api/users", findAllUsers);
@@ -73,4 +88,6 @@ export default function UserRoutes(app) {
   app.post("/api/users/signout", signout);
 
   app.post("/api/users/profile", profile);
+
+  app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
 }

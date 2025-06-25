@@ -4,6 +4,7 @@ import cors from "cors";
 import session from "express-session";
 import "dotenv/config";
 import UserRoutes from "./Kambaz/Users/routes.js";
+import CourseRoutes from "./Kambaz/Courses/routes.js";
 
 const app = express();
 app.use(cors({
@@ -31,5 +32,6 @@ app.use(session(sessionOptions));
   
 app.use(express.json());   
 Lab5(app);
-UserRoutes(app);                     
+UserRoutes(app);  
+CourseRoutes(app);                   
 app.listen(4000);
