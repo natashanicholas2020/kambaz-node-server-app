@@ -28,15 +28,10 @@ export default function UserRoutes(app) {
 
   // Find all users
   const findAllUsers = async (req, res) => {
-    try {
-      const users = await dao.findAllUsers();
-      console.log("findAllUsers:", users);
-      res.json(users);
-    } catch (e) {
-      console.error("Error in findAllUsers:", e);
-      res.status(500).json({ message: "Server error fetching users" });
-    }
+    const users = await dao.findAllUsers();
+    res.json(users);
   };
+
 
   // Find user by ID
   const findUserById = async (req, res) => {
