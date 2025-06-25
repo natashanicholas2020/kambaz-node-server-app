@@ -9,4 +9,3 @@ const schema = new mongoose.Schema(
   { collection: "modules" }
 );
 export default schema;
-//hey

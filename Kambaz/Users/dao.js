@@ -18,7 +18,7 @@ export const findUserByCredentials = (username, password) =>
 export const updateUser = (userId, user) =>
   UserModel.updateOne({ _id: userId }, { $set: user });
 
-export const deleteUser = (userId) => UserModel.deleteOne({ _id: userId });
+  export const deleteUser = (userId) => UserModel.deleteOne({ _id: userId });
 
 export const findUsersByPartialName = (partialName) => {
   const regex = new RegExp(partialName, "i");
@@ -26,3 +26,4 @@ export const findUsersByPartialName = (partialName) => {
     $or: [{ firstName: { $regex: regex } }, { lastName: { $regex: regex } }],
   });
 };
+
