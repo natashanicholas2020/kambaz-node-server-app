@@ -18,4 +18,12 @@ export function createCourse(course) {
   return newCourse;
 }
 
+export function deleteCourse(courseId) {
+  const { courses, enrollments } = Database;
+  Database.courses = courses.filter((course) => course._id !== courseId);
+  Database.enrollments = enrollments.filter(
+    (enrollment) => enrollment.course !== courseId
+);}
+
+
 
