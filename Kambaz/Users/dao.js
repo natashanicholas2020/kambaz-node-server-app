@@ -1,10 +1,10 @@
 import UserModel from "./model.js";
 import { v4 as uuidv4 } from "uuid";
 
-export const createUser = async (user) => {
-  const newUser = new UserModel({ ...user, _id: uuidv4() });
-  return await newUser.save();
-};
+export const createUser = (user) => {
+  const newUser = { ...user, _id: uuidv4() };
+  return UserModel.create(newUser);
+}
 
 export const findAllUsers = () => UserModel.find();
 

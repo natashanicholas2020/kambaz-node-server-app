@@ -6,14 +6,10 @@ export default function UserRoutes(app) {
 
   // Create user (basic)
   const createUser = async (req, res) => {
-    try {
-      const user = await dao.createUser(req.body);
-      res.json(user);
-    } catch (e) {
-      console.error("Error creating user:", e);
-      res.status(500).json({ message: "Server error creating user" });
-    }
+    const user = await dao.createUser(req.body);
+    res.json(user);
   };
+
 
   // Delete user by ID
   const deleteUser = async (req, res) => {
