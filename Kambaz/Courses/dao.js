@@ -13,7 +13,11 @@ export function findCoursesForEnrolledUser(userId) {
 }
 
 export function createCourse(course) {
-  return model.create(newCourse);
+  // Ensure a unique ID is set if not provided
+  if (!course._id) {
+    course._id = uuidv4();
+  }
+  return model.create(course);
 }
 
 export function deleteCourse(courseId) {
@@ -21,10 +25,7 @@ export function deleteCourse(courseId) {
  } 
 
 export function updateCourse(courseId, courseUpdates) {
-  const { courses } = Database;
-  const course = courses.find((course) => course._id === courseId);
-  Object.assign(course, courseUpdates);
-  return course;
+  return model.updateOne({ _id: courseId }, { $set: courseUpdates });
 }
 
 
