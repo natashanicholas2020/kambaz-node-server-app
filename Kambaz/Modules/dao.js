@@ -1,4 +1,5 @@
 import Database from "../Database/index.js";
+import model from "./model.js";
 
 export function updateModule(moduleId, moduleUpdates) {
   const { modules } = Database;
@@ -19,6 +20,5 @@ export function createModule(module) {
 }
 
 export function findModulesForCourse(courseId) {
-  const { modules } = Database;
-  return modules.filter((module) => module.course === courseId);
+  return model.find({ course: courseId });
 }

@@ -31,11 +31,11 @@ export default function CourseRoutes(app) {
     res.send(newModule);
   });
 
-  app.get("/api/courses/:courseId/modules", (req, res) => {
+  app.get("/api/courses/:courseId/modules", async (req, res) => {
     const { courseId } = req.params;
-    const modules = modulesDao.findModulesForCourse(courseId);
+    const modules = await modulesDao.findModulesForCourse(courseId);
     res.json(modules);
-  });
+  }); 
 
   app.post("/api/courses", async (req, res) => {
     const course = await dao.createCourse(req.body);
