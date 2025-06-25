@@ -21,21 +21,21 @@ export default function UserRoutes(app) {
     res.json(currentUser);
   };
 
-  const signup = (req, res) => { 
-    const user = dao.findUserByUsername(req.body.username);
+  const signup = async (req, res) => { 
+    const user = await dao.findUserByUsername(req.body.username);
     if (user) {
       res.status(400).json(
         { message: "Username already in use" });
       return;
     }
-    const currentUser = dao.createUser(req.body);
+    const currentUser = await dao.createUser(req.body);
     req.session["currentUser"] = currentUser;
     res.json(currentUser);
   };
 
-  const signin = (req, res) => { 
+  const signin = async (req, res) => { 
     const { username, password } = req.body;
-    const currentUser = dao.findUserByCredentials(username, password);
+    const currentUser =  await dao.findUserByCredentials(username, password);
     if (currentUser) {
       req.session["currentUser"] = currentUser;
       res.json(currentUser);
