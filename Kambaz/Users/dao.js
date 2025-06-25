@@ -21,8 +21,8 @@ export const updateUser = (userId, user) =>
 export const deleteUser = (userId) => UserModel.deleteOne({ _id: userId });
 
 export const findUsersByPartialName = (partialName) => {
-  const regex = new RegExp(partialName, "i"); // 'i' makes it case-insensitive
-  return model.find({
+  const regex = new RegExp(partialName, "i");
+  return UserModel.find({
     $or: [{ firstName: { $regex: regex } }, { lastName: { $regex: regex } }],
   });
 };
