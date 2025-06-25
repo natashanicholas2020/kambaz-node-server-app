@@ -151,18 +151,6 @@ export default function UserRoutes(app) {
     }
   };
 
-  // Test route: list all users directly from model
-  app.get("/api/test/users", async (req, res) => {
-    try {
-      const users = await dao.findAllUsers();
-      console.log("Test users:", users);
-      res.json(users);
-    } catch (e) {
-      console.error("Error fetching users in test route:", e);
-      res.status(500).json({ message: "Server error fetching users" });
-    }
-  });
-
   // Bind routes
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);
