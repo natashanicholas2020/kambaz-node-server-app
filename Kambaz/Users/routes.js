@@ -37,7 +37,9 @@ export default function UserRoutes(app) {
 
   const signout = (req, res) => { };
 
-  const profile = (req, res) => { };
+  const profile = (req, res) => { 
+    res.json(currentUser);
+  };
 
   app.post("/api/users", createUser);
 
