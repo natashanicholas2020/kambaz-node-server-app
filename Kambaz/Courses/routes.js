@@ -1,4 +1,5 @@
 import * as dao from "./dao.js";
+import * as modulesDao from "../Modules/dao.js";
 
 export default function CourseRoutes(app) {
   app.get("/api/courses", (req, res) => {
@@ -17,6 +18,12 @@ export default function CourseRoutes(app) {
     const courseUpdates = req.body;
     const status = dao.updateCourse(courseId, courseUpdates);
     res.send(status);
+  });
+
+  app.get("/api/courses/:courseId/modules", (req, res) => {
+    const { courseId } = req.params;
+    const modules = modulesDao.findModulesForCourse(courseId);
+    res.json(modules);
   });
 
 }
