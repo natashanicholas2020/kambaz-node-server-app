@@ -16,11 +16,11 @@ export default function ModuleRoutes(app) {
   }); 
  
   app.put("/api/modules/:moduleId", async (req, res) => {
-        const { moduleId } = req.params;
-        const moduleUpdates = req.body;
-        const status = await modulesDao.updateModule(moduleId, moduleUpdates);
-        res.send(status);
-      });
+    const { moduleId } = req.params;
+    const moduleUpdates = req.body;
+    const status = await modulesDao.updateModule(moduleId, moduleUpdates);
+    res.send(status);
+  }); 
     
  app.delete("/api/modules/:moduleId", async (req, res) => {
    const { moduleId } = req.params;
